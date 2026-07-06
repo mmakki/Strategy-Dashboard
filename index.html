@@ -3524,8 +3524,17 @@ function drawOdysseyArc(wrap,cW,cH){
   const sectorCap=maxTPO>1
     ? Math.floor((R_THEME*ARC_STEP-(maxTPO-1)*6)/(2*(maxTPO-1)+2.0))
     : Math.round(R_OBJ*(36/310));
-  const R_THEME_C=Math.max(16,Math.min(
-    Math.round(R_OBJ*(36/310)),          // natural proportion
+  // Theme circles must always render SMALLER than the objective circles.
+  // The old "natural proportion" cap (36/310) was actually LARGER than the
+  // objective circle (R_OBJ_C = 30/310). With dense data the arc-length and
+  // sector caps squeeze themes well below the objectives, so it looks right --
+  // but with sparse data (few objectives, 1-2 themes each) neither cap bites,
+  // so theme circles balloon up to 36/310 and overtake the objectives.
+  // Cap the theme radius to a fraction of the objective circle so objectives
+  // stay dominant regardless of how sparse or dense the data is.
+  const R_THEME_MAX=Math.round(R_OBJ_C*0.82);   // never larger than the objective circle
+  const R_THEME_C=Math.max(Math.min(16,R_THEME_MAX),Math.min(
+    R_THEME_MAX,                         // proportion cap (kept below objective size)
     Math.floor((arcLenPerTheme-6)/2),    // arc-length constraint
     sectorCap                            // per-objective no-overlap guarantee
   ));
