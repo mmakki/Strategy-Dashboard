@@ -800,7 +800,7 @@ function parseRows(rows,filename){
   document.getElementById('ustatus').textContent='✓ Loaded '+filename;
   document.getElementById('preview').style.display='block';
   let statsHtml=
-    `<div class="stat">Ideas: <strong>${isSandboxFmt?SB.ideas.length:ideas.length}</strong></div>`+
+    `<div class="stat">Ideas: <strong>${isSandboxFmt?SB.ideas.length:new Set(ideas.map(i=>String(i.text||'').trim().toLowerCase())).size}</strong></div>`+
     `<div class="stat">Themes: <strong>${isSandboxFmt?SB.themes.length:themes.length}</strong></div>`+
     `<div class="stat">Strategies: <strong>${isSandboxFmt?new Set(SB.themes.flatMap(t=>t.alignment||[])).size:new Set(themes.flatMap(t=>t.stratIds)).size}</strong></div>`;
   if(isSandboxFmt) statsHtml+=
