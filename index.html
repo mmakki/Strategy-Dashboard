@@ -176,14 +176,15 @@ input[type=range]{width:70px}
 </style>
 </head><body>
 <div class="app">
-<div class="hdr"><h1>Strategy Mapping Tool — V0.2</h1><p>Community of Practice Teaching and Learning — Faculty of Design &amp; Society</p></div>
+<div class="hdr"><h1>Strategy Mapping Tool - V0.3</h1><p>Community of Practice Teaching and Learning - Faculty of Design &amp; Society</p></div>
 <div class="tabs">
-  <button class="tab on" onclick="goTab('upload',this)">Upload data</button>
+  <button class="tab on" onclick="goTab('upload',this)">Load data</button>
   <button class="tab" onclick="goTab('sandbox',this)">Sandbox</button>
   <button class="tab" onclick="goTab('map',this)">Map</button>
   <button class="tab" onclick="goTab('vis',this)">Visualise</button>
   <button class="tab" onclick="goTab('ref',this)">Strategy reference</button>
 </div>
+<style>.land-btn{flex:1;min-width:210px;display:flex;flex-direction:column;align-items:stretch;gap:5px;background:#fff;border:1px solid #e3e3e3;border-radius:11px;padding:18px 20px;cursor:pointer;text-align:left;transition:border-color .2s,box-shadow .2s,transform .2s;box-shadow:none}.land-btn:hover{border-color:#111;box-shadow:0 5px 16px rgba(0,0,0,0.08);transform:translateY(-2px)}.land-btn .lb-title{width:100%;font-size:14px;font-weight:700;color:#111;letter-spacing:.01em}.land-btn .lb-sub{width:100%;white-space:normal;overflow-wrap:break-word;font-size:11.5px;font-weight:400;color:#8a8a8a;line-height:1.45}.ret-btn{display:inline-flex;align-items:center;margin-top:100px;background:#fff;color:#555;border:1px solid #d6d6d6;border-radius:8px;font-size:12px;font-weight:600;padding:9px 16px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);transition:background .18s,color .18s,border-color .18s}.ret-btn:hover{background:#111;color:#fff;border-color:#111}</style>
 <div class="panel on" id="panel-upload">
 
   <div style="max-width:560px;padding:2.5rem 0 2rem">
@@ -236,9 +237,6 @@ input[type=range]{width:70px}
     </div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
       <button onclick="sbExportCSV()">Export CSV</button>
-      <button onclick="sbSaveBackup()">Save &amp; Share</button>
-      <button onclick="document.getElementById('sb-json-in').click()">Load session</button>
-      <input type="file" id="sb-json-in" accept=".json" style="display:none" onchange="sbLoadBackup(this)">
       <button onclick="sbClearAll()" style="color:#b03020;border-color:#f0c0b8">Clear all</button>
     </div>
   </div>
@@ -269,7 +267,7 @@ input[type=range]{width:70px}
       <div style="font-size:13px;font-weight:500">Themes</div>
       <button id="sb-tfilt-all" class="pri" onclick="sbSetThemeFilter('all')" style="font-size:10px;padding:3px 10px">All</button>
       <button id="sb-tfilt-unalloc" onclick="sbSetThemeFilter('unallocated')" style="font-size:10px;padding:3px 10px">Unallocated</button>
-      <button id="sb-tdesc-toggle" onclick="sbToggleThemeDesc()" style="font-size:10px;padding:3px 10px">Show descriptions</button>
+      <button id="sb-tdesc-toggle" onclick="sbToggleThemeDesc()" style="font-size:10px;padding:3px 10px">Hide descriptions</button>
       <button id="sb-themes-view-toggle" onclick="sbToggleThemeView()" style="font-size:10px;padding:3px 10px;background:#fff;border:0.5px solid #ccc;border-radius:6px;cursor:pointer;color:#555">Grid view</button>
       <button id="sb-themes-collapse" onclick="sbCollapse('themes')" style="font-size:10px;padding:3px 10px;background:#fff;border:0.5px solid #ccc;border-radius:6px;cursor:pointer;color:#555">Collapse</button>
     </div>
@@ -308,7 +306,7 @@ input[type=range]{width:70px}
   <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #f0f0f0" id="sb-obj-hdr">
     <div style="display:flex;align-items:center;gap:8px">
       <div style="font-size:13px;font-weight:500">Objectives &amp; Goals</div>
-      <button id="sb-odesc-toggle" onclick="sbToggleObjDesc()" style="font-size:10px;padding:3px 10px">Show descriptions</button>
+      <button id="sb-odesc-toggle" onclick="sbToggleObjDesc()" style="font-size:10px;padding:3px 10px">Hide descriptions</button>
       <button id="sb-obj-view-toggle" onclick="sbToggleObjView()" style="font-size:10px;padding:3px 10px;background:#fff;border:0.5px solid #ccc;border-radius:6px;cursor:pointer;color:#555">Grid view</button>
       <button id="sb-obj-collapse" onclick="sbCollapse('obj')" style="font-size:10px;padding:3px 10px;background:#fff;border:0.5px solid #ccc;border-radius:6px;cursor:pointer;color:#555">Collapse</button>
     </div>
@@ -482,7 +480,7 @@ input[type=range]{width:70px}
 
 <!-- TAB 4: REFERENCE -->
 <div class="panel" id="panel-ref">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
     <div>
       <div style="font-size:12px;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px"><div class="ld" style="background:#185FA5;width:10px;height:10px;border-radius:50%"></div>UTS 2030 — Four strategic priorities</div>
       <div style="border-left:3px solid #185FA5;padding:8px 12px;margin-bottom:8px;border-radius:0 6px 6px 0;background:#f8f8f8"><h4 style="font-size:11px;font-weight:500;margin-bottom:3px">Creative &amp; innovative</h4><p style="font-size:10px;color:#666;line-height:1.5">Creativity &amp; innovation in teaching, research &amp; operations. Interdisciplinary collaboration. Research translation.</p></div>
@@ -497,8 +495,10 @@ input[type=range]{width:70px}
       <div style="border-left:3px solid #639922;padding:8px 12px;margin-bottom:8px;border-radius:0 6px 6px 0;background:#f8f8f8"><h4 style="font-size:11px;font-weight:500;margin-bottom:3px">FA3 — Research excellence</h4><p style="font-size:10px;color:#666;line-height:1.5">Decarbonisation, social justice, Indigenous knowledges. Visualisation, AR/VR.</p></div>
       <div style="border-left:3px solid #639922;padding:8px 12px;margin-bottom:8px;border-radius:0 6px 6px 0;background:#f8f8f8"><h4 style="font-size:11px;font-weight:500;margin-bottom:3px">FA4 — Indigenous self-determination</h4><p style="font-size:10px;color:#666;line-height:1.5">Cultural Resilience Hub. Indigenous data sovereignty. Truth-telling through creative practice.</p></div>
       <div style="border-left:3px solid #639922;padding:8px 12px;margin-bottom:8px;border-radius:0 6px 6px 0;background:#f8f8f8"><h4 style="font-size:11px;font-weight:500;margin-bottom:3px">FA5 — Partnerships for global impact</h4><p style="font-size:10px;color:#666;line-height:1.5">Industry-academia pipelines. International partnerships. Showcase programs.</p></div>
-      <div style="font-size:12px;font-weight:500;margin:12px 0 8px;display:flex;align-items:center;gap:6px"><div class="ld" style="background:#B85CA0;width:10px;height:10px;border-radius:50%"></div>FDS Strategy — emerging</div>
-      <div style="border-left:3px solid #B85CA0;padding:8px 12px;border-radius:0 6px 6px 0;background:#F7EAF5"><h4 style="font-size:11px;font-weight:500;margin-bottom:3px">Your emerging strategy</h4><p style="font-size:10px;color:#666;line-height:1.5">Built from your 10 sessions. Patterns across sessions become your strategic pillars.</p></div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px"><div class="ld" style="background:#B85CA0;width:10px;height:10px;border-radius:50%"></div>FDS Community of Practice T&amp;L Strategy</div>
+      <div id="ref-fds-objs"></div>
     </div>
   </div>
 </div>
@@ -800,9 +800,9 @@ function parseRows(rows,filename){
   document.getElementById('ustatus').textContent='✓ Loaded '+filename;
   document.getElementById('preview').style.display='block';
   let statsHtml=
-    `<div class="stat">Ideas: <strong>${ideas.length}</strong></div>`+
-    `<div class="stat">Themes: <strong>${themes.length}</strong></div>`+
-    `<div class="stat">Strategies: <strong>${new Set(themes.flatMap(t=>t.stratIds)).size}</strong></div>`;
+    `<div class="stat">Ideas: <strong>${isSandboxFmt?SB.ideas.length:ideas.length}</strong></div>`+
+    `<div class="stat">Themes: <strong>${isSandboxFmt?SB.themes.length:themes.length}</strong></div>`+
+    `<div class="stat">Strategies: <strong>${isSandboxFmt?new Set(SB.themes.flatMap(t=>t.alignment||[])).size:new Set(themes.flatMap(t=>t.stratIds)).size}</strong></div>`;
   if(isSandboxFmt) statsHtml+=
     `<div class="stat">Objectives: <strong>${SB.objectives.length}</strong></div>`+
     `<div class="stat">Goals: <strong>${SB.goals.length}</strong></div>`+
@@ -829,6 +829,11 @@ function parseRows(rows,filename){
 }
 
 // ── TAB / SUBTAB NAVIGATION ──
+function sbRenderRefObjectives(){
+  const c=document.getElementById('ref-fds-objs'); if(!c)return;
+  if(!SB.objectives||!SB.objectives.length){ c.innerHTML='<p style="font-size:10px;color:#999;font-style:italic;line-height:1.5">No objectives yet — load or build a roadmap.</p>'; return; }
+  c.innerHTML=SB.objectives.map(o=>`<div style="border-left:3px solid #B85CA0;padding:8px 12px;margin-bottom:8px;border-radius:0 6px 6px 0;background:#f8f8f8"><h4 style="font-size:11px;font-weight:500;margin-bottom:3px">${sbEsc(o.title)}</h4>${o.desc?`<p style="font-size:10px;color:#666;line-height:1.5">${sbEsc(o.desc)}</p>`:''}</div>`).join('');
+}
 function goTab(t,btn){
   const _cs=document.getElementById('cside');if(_cs)_cs.style.transform='translateX(120%)';
   const _os=document.getElementById('ody-sidebar');if(_os)_os.classList.remove('open');
@@ -836,6 +841,7 @@ function goTab(t,btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   btn.classList.add('on');
   document.getElementById('panel-'+t).classList.add('on');
+  if(t==='ref') sbRenderRefObjectives();
   if(t==='map'){
     lm=false;lSel=null;lSType=null;iSel=null;iSType=null;
     document.getElementById('lmen').style.display='';
@@ -2972,14 +2978,14 @@ function sbRenderIdeas(){
     const linked=SB.themes.filter(t=>t.ideaIds.includes(idea.id)).length;
     const ibg=linked?'#F0EBF8':'#f5f5f3';
     const ibd=linked?'#C8B0E0':'#e5e5e5';
-    return `<div style="display:inline-flex;width:100%;align-items:center;gap:4px;font-size:10px;background:${ibg};border:0.5px solid ${ibd};border-radius:5px;padding:4px 6px 4px 8px;cursor:grab;user-select:none;margin-bottom:4px;break-inside:avoid;box-sizing:border-box"
+    return `<div style="position:relative;display:inline-flex;width:100%;align-items:center;gap:4px;font-size:10px;background:${ibg};border:0.5px solid ${ibd};border-radius:5px;padding:4px 6px 4px 8px;cursor:grab;user-select:none;margin-bottom:4px;break-inside:avoid;box-sizing:border-box"
         draggable="true" data-sb-id="${idea.id}"
         ondragstart="sbIdeaDS(event,'${idea.id}',null)" ondragend="sbIdeaDE(event)">
       <span style="flex:1;color:#111;line-height:1.35;word-break:break-word;min-width:0">${sbEsc(idea.text)}</span>
       ${linked?`<span style="font-size:8px;color:#7050A0;flex-shrink:0" title="${linked} theme${linked>1?'s':''}">●</span>`:''}
-      <span class="sb-idea-acts" style="display:none;gap:2px;flex-shrink:0">
-        <span onclick="event.stopPropagation();sbOpenModal('idea','${idea.id}')" style="cursor:pointer;color:#aaa;font-size:10px;padding:0 3px;line-height:1" title="Edit">✎</span>
-        <span onclick="event.stopPropagation();sbDelIdea('${idea.id}')" style="cursor:pointer;color:#ccc;font-size:10px;line-height:1" title="Delete">✕</span>
+      <span class="sb-idea-acts" style="position:absolute;top:2px;right:3px;display:none;gap:2px;align-items:center;background:${ibg};box-shadow:-5px 0 6px 2px ${ibg};padding:1px 3px 1px 6px;border-radius:4px">
+        <span onclick="event.stopPropagation();sbOpenModal('idea','${idea.id}')" style="cursor:pointer;color:#888;font-size:10px;padding:0 3px;line-height:1" title="Edit">✎</span>
+        <span onclick="event.stopPropagation();sbDelIdea('${idea.id}')" style="cursor:pointer;color:#aaa;font-size:10px;line-height:1" title="Delete">✕</span>
       </span>
     </div>`;
   }).join('');
@@ -2989,7 +2995,7 @@ function sbRenderIdeas(){
   });
 }
 
-let sbThemeDescOn=false;
+let sbThemeDescOn=true;
 function sbToggleThemeDesc(){
   sbThemeDescOn=!sbThemeDescOn;
   const btn=document.getElementById('sb-tdesc-toggle');
@@ -2998,7 +3004,7 @@ function sbToggleThemeDesc(){
   document.querySelectorAll('.sb-tc-desc').forEach(el=>el.style.display=sbThemeDescOn?'block':'none');
 }
 
-let sbObjDescOn=false;
+let sbObjDescOn=true;
 function sbToggleObjDesc(){
   sbObjDescOn=!sbObjDescOn;
   const btn=document.getElementById('sb-odesc-toggle');
@@ -3160,7 +3166,7 @@ function sbRenderObjectives(){
   }
 
   // CARD VIEW (default)
-  row.style.display='flex';row.style.overflow='auto';row.style.columns='';
+  row.style.display='flex';row.style.flexWrap='wrap';row.style.overflow='';row.style.overflowX='visible';row.style.columns='';
   row.innerHTML=SB.objectives.map(obj=>{
     const linkedThemes=SB.themes.filter(t=>obj.themeIds.includes(t.id));
     const themeChips=linkedThemes.map(t=>`<div style="font-size:9px;font-weight:500;background:#7050A011;color:#7050A0;border:1px solid #7050A033;border-radius:20px;padding:2px 8px;display:inline-flex;align-items:center;gap:3px">
@@ -3971,9 +3977,11 @@ function cardsFlipAll() {
   if (btn) btn.textContent = _cardsAllFlipped ? 'Unflip all' : 'Flip all';
 }
 
+function loadRoadmapData(){ autoLoadFromRepo().then(function(ok){ if(!ok){ alert('Could not load data.xlsx. Make sure the file is in the same folder as this page.'); } }); }
+function showBuildOwn(){ var bo=document.getElementById('build-own'); if(bo)bo.style.display='block'; }
+function goSandbox(){ var b=document.querySelector('.tabs .tab[onclick*="sandbox"]'); if(b)goTab('sandbox',b); }
 sbHydrate();
 sbRender();
-autoLoadFromRepo();
 
 function printReport(){
   if(!SB.objectives||!SB.objectives.length){alert('No objectives yet — add data in the Sandbox tab first.');return;}
@@ -4052,12 +4060,12 @@ function printReport(){
     const xs=[ML+3, ML+colWidth+gap+3];
     const wrapW=colWidth-3;
     const avail=(PH-MB)-y;            // space left on this page, below the Themes section
+    const MINPT=8;                    // never shrink smaller than this
     doc.setFont('helvetica','normal');
-    // Find the largest font size (<=10pt) at which all ideas, split into two
-    // balanced columns, still fit in the remaining space — so nothing spills
-    // onto a second page. Falls back to the smallest size if content is huge.
-    let chosen=null;
-    for(let pt=10; pt>=6; pt-=0.25){
+    // Largest font (<=10pt, >=MINPT) at which all ideas fit in two balanced
+    // columns on the remaining space of THIS page.
+    let chosen=null, fits=false;
+    for(let pt=10; pt>=MINPT; pt-=0.25){
       doc.setFontSize(pt);
       const lh=mm(pt), gapItem=lh*0.16+0.4;
       const items=ideas.map(i=>{const lines=doc.splitTextToSize('•  '+String(i.text),wrapW);return{lines,h:lines.length*lh+gapItem};});
@@ -4066,15 +4074,47 @@ function printReport(){
       for(;split<items.length;split++){ if(h0>=total/2) break; h0+=items[split].h; }
       const c0=items.slice(0,split), c1=items.slice(split);
       const maxH=Math.max(c0.reduce((s,b)=>s+b.h,0), c1.reduce((s,b)=>s+b.h,0)||0);
-      chosen={pt,lh,gapItem,c0,c1};
-      if(maxH<=avail) break;
+      chosen={pt,lh,gapItem,items,c0,c1};
+      if(maxH<=avail){ fits=true; break; }
     }
-    const {lh,gapItem,c0,c1}=chosen;
-    doc.setFontSize(chosen.pt);doc.setTextColor(68,68,68);
-    const top=y;
-    const draw=(arr,colX)=>{ let cy=top; arr.forEach(b=>{ b.lines.forEach(line=>{ doc.text(line,colX,cy+lh*0.78); cy+=lh; }); cy+=gapItem; }); return cy; };
-    const e0=draw(c0,xs[0]); const e1=draw(c1,xs[1]);
-    y=Math.max(e0,e1)+1;
+    const {pt,lh,gapItem,items,c0,c1}=chosen;
+    doc.setFontSize(pt);doc.setTextColor(68,68,68);
+    if(fits){
+      const top=y;
+      const draw=(arr,colX)=>{ let cy=top; arr.forEach(b=>{ b.lines.forEach(line=>{ doc.text(line,colX,cy+lh*0.78); cy+=lh; }); cy+=gapItem; }); return cy; };
+      const e0=draw(c0,xs[0]); const e1=draw(c1,xs[1]);
+      y=Math.max(e0,e1)+1;
+    } else {
+      // Too many ideas to fit at the minimum size — keep two BALANCED columns
+      // and break both together onto new pages, in the same size and colour.
+      const startPage=doc.internal.getNumberOfPages();
+      const startY=y;
+      const setStyle=()=>{ doc.setFont('helvetica','normal'); doc.setFontSize(pt); doc.setTextColor(68,68,68); };
+      const drawCol=(arr,colX)=>{
+        let page=startPage, cy=startY;
+        doc.setPage(page); setStyle();
+        arr.forEach(b=>{
+          if(cy+b.h > PH-MB){
+            page++;
+            if(page>doc.internal.getNumberOfPages()){ doc.addPage(); runHeader(); }
+            else doc.setPage(page);
+            setStyle();
+            cy=MT;
+          }
+          b.lines.forEach(line=>{ doc.text(line,colX,cy+lh*0.78); cy+=lh; });
+          cy+=gapItem;
+        });
+        return {page,cy};
+      };
+      const r0=drawCol(c0,xs[0]);
+      const r1=drawCol(c1,xs[1]);
+      const lastPage=Math.max(r0.page,r1.page);
+      doc.setPage(lastPage);
+      let yEnd=MT;
+      if(r0.page===lastPage) yEnd=Math.max(yEnd,r0.cy);
+      if(r1.page===lastPage) yEnd=Math.max(yEnd,r1.cy);
+      y=yEnd+1;
+    }
   }
 
   // ---- cover masthead --------------------------------------------------
